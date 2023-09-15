@@ -49,4 +49,5 @@ require("lazy").setup({
   },
   'ray-x/lsp_signature.nvim',
   'mbbill/undotree',
+  'Mofiqul/vscode.nvim',
 })
