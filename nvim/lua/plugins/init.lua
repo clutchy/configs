@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',
-  'neovim/nvim-lspconfig',
   'jose-elias-alvarez/null-ls.nvim',
   'MunifTanjim/prettier.nvim',
   {
@@ -50,4 +49,6 @@ require("lazy").setup({
   'ray-x/lsp_signature.nvim',
   'mbbill/undotree',
   'Mofiqul/vscode.nvim',
+  'numToStr/Comment.nvim',
+  'mattn/emmet-vim',
 })

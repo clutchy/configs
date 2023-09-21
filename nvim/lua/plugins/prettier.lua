@@ -7,10 +7,6 @@ local async = event == "BufWritePost"
 null_ls.setup({
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-
       -- format on save
       vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
       vim.api.nvim_create_autocmd(event, {
@@ -22,19 +18,13 @@ null_ls.setup({
         desc = "[lsp] format on save",
       })
     end
-
-    if client.supports_method("textDocument/rangeFormatting") then
-      vim.keymap.set("x", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-    end
   end,
 })
 
 local prettier = require("prettier")
 
 prettier.setup({
-  bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+  bin = 'prettierd', -- or `'prettierd'` (v0.23.3+)
   filetypes = {
     "css",
     "graphql",
@@ -50,4 +40,3 @@ prettier.setup({
     "yaml",
   },
 })
-
