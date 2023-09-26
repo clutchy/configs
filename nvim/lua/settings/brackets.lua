@@ -37,13 +37,13 @@ function surroundWithChar(openChar, closeChar)
   vim.api.nvim_input("<ESC>vi" .. closeChar)
 end
 
-function skipClosingChar(openChar, closeChar)
+function skipClosingChar(closeChar)
   local line = vim.fn.getline(vim.fn.line("."))
   local _, lineNum, col, _ = unpack(vim.fn.getcharpos("."))
 
   if line and string.sub(line, col, col) ~= closeChar then
     vim.fn.setline(lineNum, string.sub(line, 1, col - 1) ..
-      openChar .. closeChar .. string.sub(line, col, string.len(line)))
+      closeChar .. string.sub(line, col, string.len(line)))
   end
 
   vim.fn.setcursorcharpos(lineNum, col + 1)
@@ -52,11 +52,11 @@ end
 vim.keymap.set('i', '{', '{}<left>')
 vim.keymap.set('i', '(', '()<left>')
 vim.keymap.set('i', '[', '[]<left>')
-vim.keymap.set('i', '}', function() skipClosingChar('}', '}') end)
-vim.keymap.set('i', ']', function() skipClosingChar(']', ']') end)
-vim.keymap.set('i', ')', function() skipClosingChar(')', ')') end)
-vim.keymap.set('i', "'", function() skipClosingChar("'", "'") end)
-vim.keymap.set('i', "`", function() skipClosingChar("`", "`") end)
+vim.keymap.set('i', '}', function() skipClosingChar('}') end)
+vim.keymap.set('i', ']', function() skipClosingChar(']') end)
+vim.keymap.set('i', ')', function() skipClosingChar(')') end)
+vim.keymap.set('i', "'", function() skipClosingChar("'") end)
+vim.keymap.set('i', "`", function() skipClosingChar("`") end)
 vim.keymap.set('v', '{', function() surroundWithChar("{", "}") end)
 vim.keymap.set('v', '(', function() surroundWithChar("(", ")") end)
 vim.keymap.set('v', '[', function() surroundWithChar("[", "]") end)

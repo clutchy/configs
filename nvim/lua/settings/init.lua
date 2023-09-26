@@ -7,7 +7,6 @@ vim.o.hlsearch = true
 vim.o.undofile = true
 
 vim.opt.termguicolors = true
--- vim.cmd.colorscheme('tokyonight')
 require('vscode').load()
 
 vim.keymap.set('n', '<leader>t', vim.cmd.UndotreeToggle)
