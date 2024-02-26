@@ -18,5 +18,7 @@ vim.cmd [[
     autocmd BufWritePre *.css Prettier
     autocmd BufWritePre *.html Prettier
     autocmd BufWritePre *.json Prettier
+    autocmd BufWritePre *.yaml Prettier
+    autocmd BufWritePre *.yml Prettier
     augroup end
   ]]

@@ -11,12 +11,25 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
+  ensure_installed = { 'rust_analyzer', 'cssls', 'cssmodules_ls', 'emmet_language_server',
+    'emmet_ls', 'eslint', 'sqlls', 'tsserver' },
   handlers = {
     lsp_zero.default_setup,
   },
 })
 
-lsp_zero.setup_servers({ 'tsserver' })
+lsp_zero.setup_servers({ 'tsserver', 'rust_analyzer' })
+
+local opts = {
+  tools = {
+    inlay_hints = {
+      auto = true,
+      show_parameter_hints = true,
+    },
+  },
+}
+
+require("rust-tools").setup(opts)
 
 local lua_opts = lsp_zero.nvim_lua_ls()
 require('lspconfig').lua_ls.setup(lua_opts)

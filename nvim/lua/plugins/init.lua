@@ -51,4 +51,5 @@ require("lazy").setup({
   'Mofiqul/vscode.nvim',
   'numToStr/Comment.nvim',
   'mattn/emmet-vim',
+  "simrat39/rust-tools.nvim",
 })
