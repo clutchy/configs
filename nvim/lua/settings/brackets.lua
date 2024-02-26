@@ -17,8 +17,12 @@ function surroundWithChar(openChar, closeChar)
   local endLine = line[#line]
 
   if vim.fn.mode() == 'V' then
-    vim.fn.setline(startLineNum, openChar .. startLine)
-    vim.fn.setline(endLineNum, endLine .. closeChar)
+    if #line == 1 then
+      vim.fn.setline(startLineNum, openChar .. startLine .. closeChar)
+    else
+      vim.fn.setline(startLineNum, openChar .. startLine)
+      vim.fn.setline(endLineNum, endLine .. closeChar)
+    end
     return
   end
 
@@ -29,9 +33,9 @@ function surroundWithChar(openChar, closeChar)
       closeChar .. string.sub(startLine, endCol + 1, string.len(startLine)))
   else
     vim.fn.setline(startLineNum, string.sub(startLine, 1, startCol - 1) ..
-      openChar .. string.sub(startLine, endCol, string.len(startLine)))
+      openChar .. string.sub(startLine, startCol, string.len(startLine)))
     vim.fn.setline(endLineNum,
-      string.sub(endLine, 1, endCol - 1) .. closeChar .. string.sub(endLine, endCol, string.len(endLine)))
+      string.sub(endLine, 1, endCol - 1) .. closeChar .. string.sub(endLine, endCol + 1, string.len(endLine)))
   end
 
   vim.api.nvim_input("<ESC>vi" .. closeChar)
