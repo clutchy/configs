@@ -55,3 +55,7 @@ cmp.setup({
 vim.api.nvim_create_user_command('OrganizeImports', function()
   vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
 end, {})
+
+vim.api.nvim_create_user_command('GitBlame', function()
+  vim.fn.feedkeys(":exe '!git blame -L' . line('.') . ',' . line('.') . ' ' . expand('%')\n", 'n')
+end, {})
