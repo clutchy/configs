@@ -5,8 +5,11 @@ function surroundWithChar(openChar, closeChar)
     local tmp = startLineNum
     startLineNum = endLineNum
     endLineNum = tmp
+    tmp = startCol
+    startCol = endCol
+    endCol = tmp
   end
-  if startCol > endCol then
+  if startLineNum == endLineNum and startCol > endCol then
     local tmp = startCol
     startCol = endCol
     endCol = tmp
@@ -35,7 +38,7 @@ function surroundWithChar(openChar, closeChar)
     vim.fn.setline(startLineNum, string.sub(startLine, 1, startCol - 1) ..
       openChar .. string.sub(startLine, startCol, string.len(startLine)))
     vim.fn.setline(endLineNum,
-      string.sub(endLine, 1, endCol - 1) .. closeChar .. string.sub(endLine, endCol + 1, string.len(endLine)))
+      string.sub(endLine, 1, endCol - 1) .. closeChar .. string.sub(endLine, endCol, string.len(endLine)))
   end
 
   vim.api.nvim_input("<ESC>vi" .. closeChar)

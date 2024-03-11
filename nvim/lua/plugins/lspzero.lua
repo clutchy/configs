@@ -19,6 +19,9 @@ require('mason-lspconfig').setup({
 })
 
 lsp_zero.setup_servers({ 'tsserver', 'rust_analyzer' })
+require("lspconfig").powershell_es.setup({
+    bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/"
+})
 
 local opts = {
   tools = {
@@ -54,8 +57,4 @@ cmp.setup({
 
 vim.api.nvim_create_user_command('OrganizeImports', function()
   vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
-end, {})
-
-vim.api.nvim_create_user_command('GitBlame', function()
-  vim.fn.feedkeys(":exe '!git blame -L' . line('.') . ',' . line('.') . ' ' . expand('%')\n", 'n')
 end, {})
