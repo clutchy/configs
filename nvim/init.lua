@@ -1,6 +1,7 @@
 require('plugins')
 require('settings')
 require('settings.brackets')
+require('settings.gitfilehistory')
 require('plugins.filetree')
 require('plugins.telescope')
 require('plugins.treesitter')
