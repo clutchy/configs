@@ -22,6 +22,7 @@ alias gf='git fetch'
 __git_complete gf _git_fetch
 alias gds='git diff --staged'
 __git_complete gds _git_diff
+alias nvimdiff='nvim -d'
 
 alias sai='sudo apt install -y'
 alias rsn='node -r @swc-node/register'

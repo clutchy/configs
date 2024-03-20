@@ -54,4 +54,5 @@ require("lazy").setup({
   'numToStr/Comment.nvim',
   'mattn/emmet-vim',
   "simrat39/rust-tools.nvim",
+  { "rose-pine/neovim", name = "rose-pine" },
 })

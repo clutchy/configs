@@ -8,7 +8,6 @@ vim.o.hlsearch = true
 vim.o.undofile = true
 
 vim.opt.termguicolors = true
-require('vscode').load()
 
 vim.keymap.set('n', '<leader>t', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<C-h>', vim.cmd.bprevious)

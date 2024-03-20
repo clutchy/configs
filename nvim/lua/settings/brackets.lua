@@ -41,7 +41,7 @@ function surroundWithChar(openChar, closeChar)
       string.sub(endLine, 1, endCol - 1) .. closeChar .. string.sub(endLine, endCol, string.len(endLine)))
   end
 
-  vim.api.nvim_input("<ESC>vi" .. closeChar)
+  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<ESC>vi", true, false, true) .. closeChar, 't')
 end
 
 function skipClosingChar(closeChar)
