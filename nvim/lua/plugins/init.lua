@@ -24,7 +24,6 @@ require("lazy").setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
   'nvim-treesitter/nvim-treesitter',
-  'folke/tokyonight.nvim',
   { 'williamboman/mason.nvim' },
   { 'williamboman/mason-lspconfig.nvim' },
   {
@@ -50,9 +49,17 @@ require("lazy").setup({
   'hrsh7th/nvim-cmp',
   'ray-x/lsp_signature.nvim',
   'mbbill/undotree',
-  'Mofiqul/vscode.nvim',
   'numToStr/Comment.nvim',
   'mattn/emmet-vim',
   "simrat39/rust-tools.nvim",
   { "rose-pine/neovim", name = "rose-pine" },
+  -- Themes
+  'Mofiqul/vscode.nvim',
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  { "catppuccin/nvim",  name = "catppuccin", priority = 1000 },
 })
