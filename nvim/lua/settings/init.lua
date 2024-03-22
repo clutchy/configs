@@ -6,6 +6,9 @@ vim.o.scrolloff = 10
 vim.o.number = true
 vim.o.hlsearch = true
 vim.o.undofile = true
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.o.statuscolumn = "%s %l %r "
 
 vim.opt.termguicolors = true
 
