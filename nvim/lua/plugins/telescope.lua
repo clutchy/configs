@@ -27,9 +27,9 @@ end
 
 local function getVscodeSearchIgnorePatterns()
   local projectRoot = getRoot()
+  if projectRoot == nil then return {} end
   local vscodeSettingsPath = projectRoot .. '/.vscode/settings.json'
 
-  if projectRoot == nil then return {} end
   if not fileExists(vscodeSettingsPath) then return {} end
   local f = assert(io.open(vscodeSettingsPath, "rb"))
   local jsonStr = f:read("*all")
