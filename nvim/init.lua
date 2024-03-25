@@ -3,7 +3,7 @@ require('settings')
 require('settings.brackets')
 require('settings.gitfilehistory')
 require('settings.difflines')
-require('plugins.filetree')
+-- require('plugins.filetree')
 require('plugins.telescope')
 require('plugins.treesitter')
 require('plugins.lspzero')
@@ -25,5 +25,6 @@ vim.cmd [[
     autocmd BufWritePre *.json Prettier
     autocmd BufWritePre *.yaml Prettier
     autocmd BufWritePre *.yml Prettier
+    autocmd BufAdd * execute 'cd ' .. getcwd()
     augroup end
   ]]

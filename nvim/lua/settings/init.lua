@@ -15,6 +15,7 @@ vim.opt.termguicolors = true
 vim.keymap.set('n', '<leader>t', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<C-h>', vim.cmd.bprevious)
 vim.keymap.set('n', '<C-l>', vim.cmd.bnext)
+vim.keymap.set('n', '<C-n>', vim.cmd.Explore)
 
 vim.api.nvim_create_user_command('Blame', function()
   local currentLine = vim.fn.line(".")
