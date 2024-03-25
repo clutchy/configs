@@ -11,7 +11,17 @@ function DiffSelection()
   local rightBuf = vim.api.nvim_create_buf(false, false)
   vim.api.nvim_win_set_buf(win, leftBuf)
   vim.api.nvim_win_set_buf(oldWin, rightBuf)
-  print(oldWin, win, leftBuf, rightBuf)
+
+  vim.api.nvim_buf_attach(leftBuf, false, {
+    on_lines = function()
+      LeftContent = vim.fn.getbufline(leftBuf, 0, '$')
+    end,
+  })
+  vim.api.nvim_buf_attach(rightBuf, false, {
+    on_lines = function()
+      RightContent = vim.fn.getbufline(rightBuf, 0, '$')
+    end,
+  })
 
   vim.cmd('buffer ' .. leftBuf)
   vim.fn.setbufline(leftBuf, 1, LeftContent)
@@ -57,5 +67,8 @@ end
 vim.keymap.set('v', '<leader>s', function() LoadSelection(true) end, {})
 vim.keymap.set('v', '<leader>d', function()
   LoadSelection()
+  DiffSelection()
+end, {})
+vim.keymap.set('n', '<leader>sd', function()
   DiffSelection()
 end, {})
